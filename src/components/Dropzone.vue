@@ -1,11 +1,14 @@
 <template>
-  <div ref="myDropzone" class="dropzone outer-dropzone">Dropzone</div>
+  <div ref="myDropzone" class="dropzone" v-bind:style="{'background-color': group.color}">{{group.name}}</div>
 </template>
 <script>
 import interact from "interactjs";
 
 export default {
   name: "Dropzone",
+   props: [
+       'group'
+    ],
   mounted: function() {
     console.log("Mounted?");
     const myDropzone = this.$refs.myDropzone;
@@ -63,22 +66,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.outer-dropzone {
-  height: 140px;
-}
-
-#inner-dropzone {
-  height: 80px;
-}
-
 .dropzone {
   background-color: #ccc;
   border: dashed 4px transparent;
   border-radius: 4px;
-  margin: 10px auto 30px;
+  margin: 10px;
   padding: 10px;
-  width: 80%;
   transition: background-color 0.3s;
+  flex-grow: 1;
+  color: white;
 }
 
 .drop-active {

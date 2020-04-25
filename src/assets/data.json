@@ -1,0 +1,41 @@
+{
+    "options": [
+        {
+            "id": "0",
+            "name": "Millos",
+            "class": "A"
+        },
+        {
+            "id": "1",
+            "name": "Santa Fé",
+            "class": "B"
+        },
+        {
+            "id": "2",
+            "name": "Nacional",
+            "color": "C"
+        },
+        {
+            "id": "3",
+            "name": "Whatevs",
+            "color": "B"
+        }
+    ],
+    "groups": [
+        {
+            "id": "0",
+            "name": "A",
+            "color": "blue"
+        },
+        {
+            "id": "1",
+            "name": "B",
+            "color": "red"
+        },
+        {
+            "id": "2",
+            "name": "C",
+            "color": "green"
+        }
+    ]
+}

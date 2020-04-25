@@ -26,7 +26,6 @@ export default {
     initInteract: function(selector) {
       interact(selector).dropzone({
         accept: ".draggable",
-        overlap: 0.75,
         ondropactivate: this.onDropActiveListener,
         ondragenter: this.onDragEnterListener,
         ondragleave: this.onDragLeaveListener,

@@ -1,17 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Draggable/>
+    <Dropzone/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
-
+import Draggable from "./components/Draggable.vue";
+import Dropzone from "./components/Dropzone.vue";
 @Component({
   components: {
-    HelloWorld,
+    Draggable,
+    Dropzone
   },
 })
 export default class App extends Vue {}

@@ -59,7 +59,7 @@ export default {
         this.gameOver = true;
          this.$swal({ icon: 'info', 
          title: 'Game Over', 
-         message: 'Tu puntaje fue: '+ this.score, 
+         text: 'Tu puntaje fue: '+ this.score, 
          confirmButtonText: '¡Reiniciar!'}).then((result) => {
             if (result.value) {
               this.restartGame();
@@ -88,7 +88,7 @@ export default {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  transition: 0.15s filter ease-in-out;
+  transition: 1s filter ease-in-out;
   &.gameOver {
     filter: blur(20px);
   }

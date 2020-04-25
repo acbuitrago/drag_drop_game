@@ -1,37 +1,84 @@
 <template>
-  <div id="app">
+  <div class="app" :class="{gameOver: gameOver}">
     <div class="side">
-      <Draggable v-for="item in game.options" :key="item.id" />
+    <Score :score="score"/>
+     <Draggable v-if="optionsArray.length > 0 && !gameOver" :option="optionsArray[currentIndex]" />
     </div>
     <div class="side classes">
-      <Dropzone v-for="item in game.groups" :key="item.id" :group="item"/>
+      <Dropzone v-for="item in game.groups" :key="item.id" :group="item" v-on:dropped="onItemDropped(item)" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+<script>
 import Draggable from "./components/Draggable.vue";
 import Dropzone from "./components/Dropzone.vue";
+import Score from "./components/Score.vue";
 import json from "./assets/data.json";
+import Config from "./config.ts";
 
-@Component({
+export default {
   components: {
     Draggable,
-    Dropzone
-  }
-})
-export default class App extends Vue {
+    Dropzone, 
+    Score
+  },
   data() {
     return {
-      game: json
-    };
+      game: json,
+      score: 0,
+      currentIndex: 0,
+      optionsArray: [],
+      gameOver: false
+    }
+  },
+  mounted: function() {
+    this.optionsArray = this.shuffleArray(this.game.options);
+  },
+  methods: {
+    shuffleArray: function(original) {
+      const array = original.slice(0);
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    },
+    onItemDropped: function(group){
+      if (group.name === this.optionsArray[this.currentIndex].class){
+        this.score += Config.rightPoints;
+        this.$swal({ icon: 'success', title: 'Correcto',
+                    showConfirmButton: false,
+                    timer: 1000});
+      } else {
+        this.$swal({ icon: 'error', title: 'Oops...', text: '¡Respuesta incorrecta!'});
+      }
+     
+      this.currentIndex++;
+      if(this.currentIndex === this.optionsArray.length){
+        this.gameOver = true;
+         this.$swal({ icon: 'info', 
+         title: 'Game Over', 
+         message: 'Tu puntaje fue: '+ this.score, 
+         confirmButtonText: '¡Reiniciar!'}).then((result) => {
+            if (result.value) {
+              this.restartGame();
+            }
+         });
+      }
+    },
+    restartGame: function() {
+      this.optionsArray = this.shuffleArray(this.game.options);
+      this.currentIndex = 0;
+      this.gameOver = false;
+      this.score = 0;
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
-#app {
+.app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -39,9 +86,14 @@ export default class App extends Vue {
   color: #2c3e50;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  transition: 0.15s filter ease-in-out;
+  &.gameOver {
+    filter: blur(20px);
+  }
 }
+
 .side {
   flex-grow: 1;
   padding: 40px;
@@ -52,8 +104,9 @@ export default class App extends Vue {
 }
 html,
 body {
-  height: 100%;
-  width: 100%;
   margin: 0;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
 </style>

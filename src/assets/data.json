@@ -13,12 +13,12 @@
         {
             "id": "2",
             "name": "Nacional",
-            "color": "C"
+            "class": "C"
         },
         {
             "id": "3",
             "name": "Whatevs",
-            "color": "B"
+            "class": "B"
         }
     ],
     "groups": [

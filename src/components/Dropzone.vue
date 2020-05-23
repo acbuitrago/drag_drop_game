@@ -1,9 +1,11 @@
 <template>
   <div ref="myDropzone" class="dropzone"
-  v-bind:style="{'background-color': group.color}"
+  :style="cssProps"
   :class="{'drop-active': dropActive, 'drop-target': dragIn}"
   >
-    {{group.name}}
+    <div class="title">{{group.name}}</div>
+    <img v-bind:src="require(`@/assets/${group.image}`)">
+               
   </div>
 </template>
 <script>
@@ -21,6 +23,13 @@ export default {
   mounted: function() {
     const myDropzone = this.$refs.myDropzone;
     this.initInteract(myDropzone);
+  },
+  computed: {
+    cssProps() {
+      return {
+        '--dropColor': this.group.color
+      }
+    }
   },
   methods: {
     initInteract: function(selector) {
@@ -62,17 +71,27 @@ export default {
 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
 .dropzone {
-  background-color: #ccc;
   border: dashed 4px transparent;
   border-radius: 4px;
   margin: 10px;
   padding: 10px;
   transition: background-color 0.3s;
   flex-grow: 1;
-  color: white;
+  color: black;
   user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  img {
+    max-height: 126px;
+    align-self: center;
+  }
 }
 
 .drop-active {
@@ -81,7 +100,7 @@ export default {
 
 .drop-target {
   opacity: 0.5;
-  border-color: #fff;
+  border-color: var(--dropColor);
   border-style: solid;
 }
 

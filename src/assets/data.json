@@ -2,40 +2,198 @@
     "options": [
         {
             "id": "0",
-            "name": "Millos",
-            "class": "A"
-        },
-        {
+            "name": "Plástico",
+            "image": "images/plastico.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
             "id": "1",
-            "name": "Santa Fé",
-            "class": "B"
-        },
-        {
+            "name": "Cinta",
+            "image": "images/cinta.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
             "id": "2",
-            "name": "Nacional",
-            "class": "C"
-        },
-        {
+            "name": "Plástico latas",
+            "image": "images/plastico_latas.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
             "id": "3",
-            "name": "Whatevs",
-            "class": "B"
-        }
+            "name": "Caja",
+            "image": "images/caja.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "5",
+            "name": "Paquetes",
+            "image": "images/paquetes.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "6",
+            "name": "Cubiertos",
+            "image": "images/cubiertos.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "7",
+            "name": "Metal",
+            "image": "images/metal.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "8",
+            "name": "Bolsas",
+            "image": "images/bolsas.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "9",
+            "name": "Caja de pizza",
+            "image": "images/caja_pizza.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "10",
+            "name": "Cartón periódico",
+            "image": "images/carton_periodico.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "11",
+            "name": "Etiqueta",
+            "image": "images/etiqueta.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "12",
+            "name": "Cepillo de dientes",
+            "image": "images/cepillo_dientes.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "13",
+            "name": "Mezcladores",
+            "image": "images/mezcladores.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "14",
+            "name": "Post It",
+            "image": "images/postit.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "15",
+            "name": "Periódico",
+            "image": "images/periodico.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "17",
+            "name": "Sobres de papel",
+            "image": "images/sobres_papel.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "18",
+            "name": "Pañal",
+            "image": "images/pañal.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "19",
+            "name": "Colilla",
+            "image": "images/colilla.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "20",
+            "name": "Tetrapack",
+            "image": "images/tetrapack.jpg",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "22",
+            "name": "Residuos alimentos",
+            "image": "images/residuos_alimentos.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "23",
+            "name": "Tela",
+            "image": "images/tela.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "24",
+            "name": "Vidrio",
+            "image": "images/vidrio.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "26",
+            "name": "Barrido",
+            "image": "images/barrido.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "27",
+            "name": "Loza",
+            "image": "images/loza.png",
+            "class": "",
+            "explanation": ""
+       },
+       {
+            "id": "28",
+            "name": "Papel Higiénico",
+            "image": "images/papel_higienico.png",
+            "class": "",
+            "explanation": ""
+       }       
     ],
     "groups": [
         {
             "id": "0",
-            "name": "A",
-            "color": "blue"
+            "name": "Caneca Azul",
+            "color": "blue",
+            "image": "images/caneca_azul.png"
         },
         {
             "id": "1",
-            "name": "B",
-            "color": "red"
+            "name": "Caneca Blanca",
+            "color": "gray",
+            "image": "images/caneca_blanca.png"
         },
         {
             "id": "2",
-            "name": "C",
-            "color": "green"
+            "name": "Caneca Verde",
+            "color": "green",
+            "image": "images/caneca_verde.png"
         }
     ]
 }

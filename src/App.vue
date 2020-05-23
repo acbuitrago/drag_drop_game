@@ -1,11 +1,19 @@
 <template>
   <div class="app" :class="{gameOver: gameOver}">
     <div class="side">
-    <Score :score="score"/>
-     <Draggable v-if="optionsArray.length > 0 && !gameOver" :option="optionsArray[currentIndex]" />
+      <Score :score="score" />
+      <div class="dragzone">
+        <div>¡Arrastra el objeto a su caneca de reciclaje!</div>
+        <Draggable v-if="optionsArray.length > 0 && !gameOver" :option="optionsArray[currentIndex]" />
+      </div>
     </div>
     <div class="side classes">
-      <Dropzone v-for="item in game.groups" :key="item.id" :group="item" v-on:dropped="onItemDropped(item)" />
+      <Dropzone
+        v-for="item in game.groups"
+        :key="item.id"
+        :group="item"
+        v-on:dropped="onItemDropped(item)"
+      />
     </div>
   </div>
 </template>
@@ -20,7 +28,7 @@ import Config from "./config.ts";
 export default {
   components: {
     Draggable,
-    Dropzone, 
+    Dropzone,
     Score
   },
   data() {
@@ -30,7 +38,7 @@ export default {
       currentIndex: 0,
       optionsArray: [],
       gameOver: false
-    }
+    };
   },
   mounted: function() {
     this.optionsArray = this.shuffleArray(this.game.options);
@@ -41,30 +49,42 @@ export default {
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
-      }
+      }/*
+
+      array = array.slice(0,10);
+      console.log(array);*/
       return array;
     },
-    onItemDropped: function(group){
-      if (group.name === this.optionsArray[this.currentIndex].class){
+    onItemDropped: function(group) {
+      if (group.name === this.optionsArray[this.currentIndex].class) {
         this.score += Config.rightPoints;
-        this.$swal({ icon: 'success', title: 'Correcto',
-                    showConfirmButton: false,
-                    timer: 1000});
+        this.$swal({
+          icon: "success",
+          title: "Correcto",
+          showConfirmButton: false,
+          timer: 1000
+        });
       } else {
-        this.$swal({ icon: 'error', title: 'Oops...', text: '¡Respuesta incorrecta!'});
+        this.$swal({
+          icon: "error",
+          title: "Oops...",
+          text: "¡Respuesta incorrecta!"
+        });
       }
-     
+
       this.currentIndex++;
-      if(this.currentIndex === this.optionsArray.length){
+      if (this.currentIndex === this.optionsArray.length) {
         this.gameOver = true;
-         this.$swal({ icon: 'info', 
-         title: 'Game Over', 
-         text: 'Tu puntaje fue: '+ this.score, 
-         confirmButtonText: '¡Reiniciar!'}).then((result) => {
-            if (result.value) {
-              this.restartGame();
-            }
-         });
+        this.$swal({
+          icon: "info",
+          title: "Game Over",
+          text: "Tu puntaje fue: " + this.score,
+          confirmButtonText: "¡Reiniciar!"
+        }).then(result => {
+          if (result.value) {
+            this.restartGame();
+          }
+        });
       }
     },
     restartGame: function() {
@@ -96,7 +116,13 @@ export default {
 
 .side {
   flex-grow: 1;
-  padding: 40px;
+  .dragzone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+  }
 }
 .classes {
   display: flex;
@@ -105,8 +131,7 @@ export default {
 html,
 body {
   margin: 0;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
-
 </style>
